@@ -28,11 +28,9 @@ dist/
 └── index.html
 ```
 
-#### 3 Flask: prepare and run
+#### 3 Flask: run
 
-After you get the `dist`, you should copy it into `flask_backend/template`, then the flask app can find the right files.
-
-Run the command after preparation is finished.
+Run the command after vue preparation is finished.
 
 ```shell
 cd flask_backend
