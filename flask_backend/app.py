@@ -9,9 +9,11 @@ import io
 from diffusionModel import TestModel
 
 # Configs
-STATIC_FOLDER = './templates/dist/_static'
-TEMPLATE_FODER = './templates/dist'
+STATIC_FOLDER = '../vue_frontend/dist/_static'
+TEMPLATE_FODER = '../vue_frontend/dist'
 UPLOAD_IMG_PATH   = os.path.join(os.path.dirname(__file__), 'upload_imgs')
+if not os.path.exists(UPLOAD_IMG_PATH):
+    os.mkdir(UPLOAD_IMG_PATH)
 UPLOAD_IMG_NAME   = 'up-img.png'
 MASK_IMG_NAME     = 'mask-img.png'
 EDITED_MASK_NAME  = 'edited_mask.png'
