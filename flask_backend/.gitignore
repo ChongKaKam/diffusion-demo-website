@@ -1,0 +1,6 @@
+*.pyc
+*~
+__pycache__
+upload_imgs
+.DS_Store
+*.db
