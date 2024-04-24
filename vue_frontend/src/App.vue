@@ -3,6 +3,7 @@ import GithubIcon from './components/GitHubIcon.vue'
 import UploadFrame from './components/UploadFrame.vue';
 import MaskCanvas from './components/MaskCanvas.vue';
 import DownloadFrame from './components/DownloadFrame.vue';
+import PageFooter from './components/PageFooter.vue';
 
 import axios from 'axios'
 import { onMounted, onUnmounted } from 'vue';
@@ -28,28 +29,39 @@ async function handleBeforeUnload(event) {
 </script>
 
 <template>
-  <h1 class="webTitle">Diffusion Model Demo</h1>
+  <div class="pageBackground"><img></div>
+  <h1 class="webTitle"><u>Diffusion Model Demo</u></h1>
   <div class="infoBar">
     <github-icon></github-icon>
-    <p style="font-size: 36px;">Gulab</p> 
+    <p style="font-size: 28px;">Gulab</p> 
   </div>
-  <div class="imgCols">
-    <div class="imgFrame">
-      <!-- 123 -->
-      <upload-frame></upload-frame>
-    </div>
-    <div class="imgFrame">
-      <mask-canvas></mask-canvas>
-    </div>
-    <div class="imgFrame">
-      <!-- 123 -->
-      <download-frame></download-frame>
+  <div class="colsContainer">
+    <div class="imgCols">
+      <div class="imgFrame">
+        <!-- 123 -->
+        <upload-frame></upload-frame>
+      </div>
+      <div class="imgFrame">
+        <mask-canvas></mask-canvas>
+      </div>
+      <div class="imgFrame">
+        <!-- 123 -->
+        <download-frame></download-frame>
+      </div>
     </div>
   </div>
+  <page-footer></page-footer>
 </template>
 
 <style scoped>
+.pageBackground{
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+}
 h1.webTitle{
+  margin-top: 16px;
   font-size: 56px;
   font-family: 'Helvetica Neue';
   text-align: center;
@@ -59,9 +71,19 @@ div.infoBar{
   justify-content: center;
   align-items: center;
 }
+div.colsContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
 div.imgCols{
    display: flex;
    justify-content: center;
+   width: 1200px;
+   padding-bottom: 64px;
+   border: 2px dashed #8e8e8e;
+   background-color: #F5F7FA;
+   border-radius: 30px;
 }
 div.imgFrame{
   width: 256px;
@@ -70,4 +92,5 @@ div.imgFrame{
   margin-right: 32px;
   margin-top: 8px;
 }
+
 </style>

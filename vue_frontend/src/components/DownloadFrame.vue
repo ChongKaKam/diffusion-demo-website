@@ -2,7 +2,7 @@
     <div class="col-frame">
         <p class="img-title">Final Image</p> 
         <div class="demo-image">
-            <el-image style="width: 256px; height: 256px" :src="url" fit="contain">
+            <el-image style="width: 256px; height: 256px;" :src="url" fit="contain">
               <template #error>
                 <el-image src="_static/icons/photo.png" class='error-img'></el-image>
               </template>
@@ -62,6 +62,7 @@
     width: 260px;
     height: 260px;
     vertical-align: top;
+    background-color: white;
   }
   .img-title{
     font-size: 32px;

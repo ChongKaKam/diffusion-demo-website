@@ -27,6 +27,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1500,
     assetsDir: '_static',
     
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 9999
   }
 })
 

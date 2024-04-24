@@ -1,5 +1,5 @@
 <template>
-    <a class="githubLink" href="http://www.baidu.com" target="_blank">
+    <a class="githubLink" href="https://github.com/ChongKaKam/diffusion-demo-website" target="_blank">
       <img class="githubIcon" :src="iconSrc" />
     </a>
 </template>
@@ -21,7 +21,7 @@
 
 <style>
 img.githubIcon{
-  width: 48px;
+  width: 36px;
   margin-left: 12px;
   margin-right: 12px;
   /* background-color: white; */

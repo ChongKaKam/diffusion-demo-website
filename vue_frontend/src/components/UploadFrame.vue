@@ -54,6 +54,7 @@
     width: 260px;
     height: 260px;
     vertical-align: top;
+    background-color: white;
   }
   .img-title{
     font-size: 32px;

@@ -16,12 +16,20 @@
           <p>Brush Size</p>
           <el-slider v-model="brushWidth" size="small" :step="1" :min="6" :max="16" show-stops/>
         </div>
-        <div style="margin-top: 4px">
-          <el-radio-group v-model="brushColor" fill="#73767a" >
+        <div class="selectBar">
+          <el-radio-group v-model="brushColor" fill="#73767a"  >
             <el-radio-button label="Face" value="orange"/>
             <el-radio-button label="Hair" value="brown"/>
             <el-radio-button label="Lip" value="red" />
             <el-radio-button label="Ear" value="green" />
+          </el-radio-group>
+        </div>
+        <div class="selectBar">
+          <el-radio-group v-model="brushColor" fill="#73767a" >
+            <el-radio-button label="Blcak" value="black"/>
+            <el-radio-button label="NA" value="#606266"/>
+            <el-radio-button label="NA" value="#909399" />
+            <el-radio-button label="NA" value="#EBEDF0" />
           </el-radio-group>
         </div>
       </div>
@@ -133,6 +141,8 @@ const generateImage = async() => {
     margin: 8px;
   }
   .brush-tool-box{
+    width: 256px;
+    height: 180px;
     margin-top: 12px;
     padding-bottom: 8px;
     border-radius: 16px;
@@ -140,7 +150,8 @@ const generateImage = async() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
+    background-color: white;
   }
   .brush-button{
     margin-top: 8px;
@@ -153,8 +164,15 @@ const generateImage = async() => {
     margin-right: 12px;
   }
   .brush-slider{
-    margin-top: 8px;
+    margin-top: 12px;
     width: 200px;
     font-size: 18px;
+  }
+  .selectBar{
+    margin-top: 8px;
+    margin-bottom: 4px;
+    width: 250px;
+    /* display: flex;
+    justify-content: center; */
   }
 </style>
