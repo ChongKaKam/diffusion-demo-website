@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import base64
 import io
-from diffusionModel import TestModel
+from diffusionModel import TestModel, DiffusionModel
 
 # Configs
 STATIC_FOLDER = '../vue_frontend/dist/_static'
@@ -19,13 +19,14 @@ MASK_IMG_NAME     = 'mask-img.png'
 EDITED_MASK_NAME  = 'edited_mask.png'
 DOWNLOAD_IMG_NAME = 'down-img.png'
 
+# init Model
+# Model = TestModel(root_path=UPLOAD_IMG_PATH)
+Model = DiffusionModel(root_path=UPLOAD_IMG_PATH)
+
 # start APP
 app = Flask(__name__,
             static_folder=STATIC_FOLDER,
             template_folder=TEMPLATE_FODER)
-
-# init Model
-Model = TestModel(root_path=UPLOAD_IMG_PATH)
 
 # API functions
 @app.route('/', methods=['GET'])

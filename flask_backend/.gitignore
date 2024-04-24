@@ -4,3 +4,5 @@ __pycache__
 upload_imgs
 .DS_Store
 *.db
+inverse_pipeline
+ddpm-celeba
