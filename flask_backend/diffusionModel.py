@@ -116,7 +116,7 @@ class DiffusionModel:
         return output['model_output'].detach().cpu().numpy()
 
     def numpy_to_image(self, np_array):
-        np_array = np_array.astype(np.int8)
+        np_array = np_array.astype(np.uint8)
         image = Image.fromarray(np_array, 'RGB')
         return image
 
@@ -209,8 +209,8 @@ class DiffusionModel:
             # A
             edited_canvas = np.array(canvas_mask_image)[:,:,3]
             edited_pos = np.nonzero(edited_canvas)
-            A = np.zeros_like(edited_canvas,dtype=np.int8)
-            A[edited_pos] = 1
+            A = np.ones_like(edited_canvas,dtype=np.int8)
+            A[edited_pos] = 0
             # A = Image.fromarray(A, 'L')
             # A.save(os.path.join(self.root_path, 'A.png'), 'PNG')
             # exit()
@@ -221,10 +221,12 @@ class DiffusionModel:
             A = A.unsqueeze(0)
             # concate
             print(f'{raw_image.shape},{edited_mask_image.shape}')
+            raw_image = raw_image / 127.5 - 1.0
             clean_images = torch.cat([raw_image, edited_mask_image], dim=0).unsqueeze(0)
             # inverse
             print(f'{clean_images.shape}, {A.shape}')
             A = A.cuda()
+            print(edited_mask_image)
             clean_images = clean_images.cuda()
             new_image = self.inverse(clean_images, A)[0, 0:3, :, :]
             new_image = torch.from_numpy(new_image).permute(1,2,0).numpy()

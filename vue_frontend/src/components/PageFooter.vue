@@ -21,6 +21,7 @@
   color: #212529;
   text-align: center;
   padding: 10px 0;
+  border-top: 1px solid #d3d5d6;
 }
 .logo{
   vertical-align: middle;

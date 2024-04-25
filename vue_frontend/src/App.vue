@@ -6,7 +6,7 @@ import DownloadFrame from './components/DownloadFrame.vue';
 import PageFooter from './components/PageFooter.vue';
 
 import axios from 'axios'
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 onMounted(() => {
   window.addEventListener('beforeunload', handleBeforeUnload);
@@ -17,15 +17,19 @@ onUnmounted(() => {
 });
 
 async function handleBeforeUnload(event) {
-  // 在这里处理 beforeunload 事件
-  // event.preventDefault();
-  // event.returnValue = '';
+  event.preventDefault();
+  console.log('clean images')
+  event.returnValue = '';
   try {
     const response = await axios.post('/clean', '');
   } catch (error) {
     console.error(error);
   }
 }
+let message = ref(false);
+const changeMessage = (newMessage) => {
+  message.value = newMessage
+};
 </script>
 
 <template>
@@ -33,7 +37,7 @@ async function handleBeforeUnload(event) {
   <h1 class="webTitle"><u>Diffusion Model Demo</u></h1>
   <div class="infoBar">
     <github-icon></github-icon>
-    <p style="font-size: 28px;">Gulab</p> 
+    <p style="font-size: 28px;">Jiawei Zhang, Jiaxin Zhuang</p> 
   </div>
   <div class="colsContainer">
     <div class="imgCols">
@@ -42,11 +46,11 @@ async function handleBeforeUnload(event) {
         <upload-frame></upload-frame>
       </div>
       <div class="imgFrame">
-        <mask-canvas></mask-canvas>
+        <mask-canvas :message="message" @changeMessage="changeMessage"></mask-canvas>
       </div>
       <div class="imgFrame">
         <!-- 123 -->
-        <download-frame></download-frame>
+        <download-frame :message="message"></download-frame>
       </div>
     </div>
   </div>

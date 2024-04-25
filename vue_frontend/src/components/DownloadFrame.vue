@@ -1,7 +1,7 @@
 <template>
     <div class="col-frame">
         <p class="img-title">Final Image</p> 
-        <div class="demo-image">
+        <div class="demo-image" v-loading="message.message">
             <el-image style="width: 256px; height: 256px;" :src="url" fit="contain">
               <template #error>
                 <el-image src="_static/icons/photo.png" class='error-img'></el-image>
@@ -17,18 +17,18 @@
     import axios from 'axios';
     const url = ref('');
     const cnt = ref(0);
-    const hasError = ref(false)
     const imgID = ref(0)
+    const message = defineProps(['message']);
     const fetchImage = async () => {
       try {
         const response = await axios.get('/down-image-url');
         imgID.value = response.data.id;
         url.value = response.data.url + '?' + response.data.id;
-        hasError.value = false;
+        message.message = false
       } catch (error) {
         // console.error(error);
         url.value = 'png?' + imgID.toString();
-        hasError.value = true;
+        message.message = flase
       }
     };
     const intervalId = setInterval(fetchImage, 1000);
