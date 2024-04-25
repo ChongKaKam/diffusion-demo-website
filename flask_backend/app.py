@@ -115,7 +115,7 @@ def gen_image():
             img_path = os.path.join(UPLOAD_IMG_PATH, EDITED_MASK_NAME)
             image.save(img_path, 'PNG')
             # call diffusion model to generate image
-            final_id = Model.gen_final(EDITED_MASK_NAME, DOWNLOAD_IMG_NAME)
+            final_id = Model.gen_final(UPLOAD_IMG_NAME, DOWNLOAD_IMG_NAME, MASK_IMG_NAME, EDITED_MASK_NAME)
             return f'{final_id}', 200
         elif img_type == 'mask':
             # call diffusion model to generate mask
